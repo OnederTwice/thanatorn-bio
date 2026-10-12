@@ -1,0 +1,472 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Thanatorn Jongkijworakul | Business Analyst</title>
+    
+    <!-- ฟอนต์ภาษาอังกฤษ (Inter) และภาษาไทย (Prompt) -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Prompt:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: { 
+                        sans: ['Inter', 'Prompt', 'sans-serif'] 
+                    },
+                    colors: {
+                        brand: {
+                            dark: '#0f172a',    /* Navy Blue */
+                            primary: '#1e3a8a', /* Corporate Blue */
+                            accent: '#0d9488',  /* Tech Teal */
+                            light: '#f8fafc'    /* Clean Slate */
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        html { scroll-behavior: smooth; }
+        
+        /* --- ระบบสลับภาษา (Language Toggle Logic) --- */
+        body[data-lang="en"] .lang-th { display: none !important; }
+        body[data-lang="th"] .lang-en { display: none !important; }
+
+        /* --- ระบบ Tabs --- */
+        .tab-content { display: none; animation: fadeIn 0.4s ease-in-out; }
+        .tab-content.active { display: flex; }
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+        .tab-btn.active { background-color: #1e3a8a; color: white; border-color: #1e3a8a; }
+
+        /* --- Slider พื้นหลัง (สำหรับ 3 รูป) --- */
+        .slider-bg {
+            position: absolute; inset: 0; background-size: cover; background-position: center; opacity: 0;
+            animation: kenburns 15s infinite;
+        }
+        .slider-bg:nth-child(1) { animation-delay: 0s; }
+        .slider-bg:nth-child(2) { animation-delay: 5s; }
+        .slider-bg:nth-child(3) { animation-delay: 10s; }
+        @keyframes kenburns {
+            0% { opacity: 0; transform: scale(1); }
+            10% { opacity: 0.5; } 25% { opacity: 0.5; }
+            35% { opacity: 0; transform: scale(1.05); } 100% { opacity: 0; transform: scale(1.05); }
+        }
+    </style>
+</head>
+<!-- ค่าเริ่มต้นคือภาษาไทย (data-lang="th") ถ้าอยากให้เริ่มเป็นอังกฤษให้แก้เป็น "en" -->
+<body data-lang="th" class="bg-brand-light text-slate-800 antialiased selection:bg-brand-accent selection:text-white">
+
+    <!-- Navigation -->
+    <nav class="fixed w-full bg-white/90 backdrop-blur-md shadow-sm z-50 transition-all">
+        <div class="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
+            <div class="text-xl font-bold text-brand-dark tracking-tight">Thanatorn J.</div>
+            
+            <div class="hidden md:flex items-center space-x-8 font-medium text-sm text-slate-600">
+                <a href="#hero" class="hover:text-brand-accent transition">
+                    <span class="lang-en">Home</span><span class="lang-th">หน้าแรก</span>
+                </a>
+                <a href="#case-studies" class="hover:text-brand-accent transition">
+                    <span class="lang-en">Case Studies</span><span class="lang-th">ผลงาน</span>
+                </a>
+                <a href="#journey" class="hover:text-brand-accent transition">
+                    <span class="lang-en">Journey</span><span class="lang-th">ประสบการณ์</span>
+                </a>
+                
+                <!-- ปุ่มสลับภาษา -->
+                <button onclick="toggleLanguage()" class="px-3 py-1.5 bg-slate-100 text-slate-700 hover:bg-slate-200 rounded-md font-semibold transition flex items-center gap-2 border border-slate-300">
+                    <span class="lang-en">🇹🇭 Switch to Thai</span>
+                    <span class="lang-th">🇬🇧 Switch to English</span>
+                </button>
+                
+                <a href="Resume_Thanatorn_BA.pdf" download class="px-4 py-2 bg-brand-primary text-white rounded hover:bg-blue-900 transition-all shadow-sm">
+                    <span class="lang-en">Download Resume</span><span class="lang-th">โหลดเรซูเม่</span>
+                </a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- 01. Hero Section -->
+    <section id="hero" class="relative min-h-[90vh] flex items-center pt-20 overflow-hidden">
+        
+        <!-- ==========================================
+             ใส่ชื่อไฟล์รูปภาพสำหรับทำ Background Slider
+        =========================================== -->
+        <div class="absolute inset-0 z-0">
+            <div class="slider-bg" style="background-image: url('ใส่ชื่อไฟล์รูปที่_1_ที่นี่.jpg');"></div>
+            <div class="slider-bg" style="background-image: url('ใส่ชื่อไฟล์รูปที่_2_ที่นี่.jpg');"></div>
+            <div class="slider-bg" style="background-image: url('ใส่ชื่อไฟล์รูปที่_3_ที่นี่.jpg');"></div>
+            <div class="absolute inset-0 bg-white/70 backdrop-blur-[2px]"></div>
+        </div>
+
+        <div class="relative z-10 w-full max-w-7xl mx-auto px-6 py-12 flex flex-col-reverse md:flex-row items-center gap-12">
+            <div class="flex-1 space-y-6">
+                <div class="inline-block px-4 py-1.5 bg-blue-100/80 backdrop-blur-sm text-brand-primary font-semibold text-sm rounded-full">
+                    BUSINESS ANALYST PORTFOLIO
+                </div>
+                
+                <h1 class="text-4xl md:text-5xl lg:text-6xl font-bold text-brand-dark leading-tight">
+                    <span class="lang-en">Connecting Data to <br> <span class="text-transparent bg-clip-text bg-gradient-to-r from-brand-primary to-brand-accent">Business Growth.</span></span>
+                    <span class="lang-th">เชื่อมโยงข้อมูล สู่การเติบโตของ <br> <span class="text-transparent bg-clip-text bg-gradient-to-r from-brand-primary to-brand-accent">ธุรกิจอย่างยั่งยืน</span></span>
+                </h1>
+                
+                <p class="text-lg text-slate-700 font-medium leading-relaxed max-w-xl">
+                    <span class="lang-en">Hello, I'm Thanatorn. I blend financial logic, data analysis, and operational hands-on experience to turn complex business challenges into smooth, actionable workflows.</span>
+                    <span class="lang-th">สวัสดีครับ ผมธนธรณ์ ผมนำลอจิกทางการเงิน การวิเคราะห์ข้อมูล และประสบการณ์ทำงานหน้างานจริง มาผสมผสานกันเพื่อเปลี่ยนปัญหาที่ซับซ้อน ให้กลายเป็นระบบการทำงานที่ราบรื่นและวัดผลได้</span>
+                </p>
+                
+                <div class="flex flex-wrap gap-4 pt-4">
+                    <a href="#case-studies" class="px-6 py-3 bg-brand-primary hover:bg-blue-900 text-white font-medium rounded-lg shadow-lg transition-all">
+                        <span class="lang-en">Explore My Work</span><span class="lang-th">ดูผลงานของผม</span>
+                    </a>
+                </div>
+            </div>
+            <div class="flex-1 relative w-full flex justify-center md:justify-end">
+                <div class="relative w-64 h-80 md:w-80 md:h-[400px]">
+                    <div class="absolute inset-0 bg-gradient-to-tr from-brand-primary to-brand-accent rounded-2xl transform rotate-3 scale-105 opacity-20"></div>
+                    <!-- ==========================================
+                         ใส่ชื่อไฟล์รูปโปรไฟล์ (หน้าปก)
+                    =========================================== -->
+                    <img src="ใส่ชื่อไฟล์รูปโปรไฟล์ที่นี่.jpg" alt="Profile" class="relative z-10 w-full h-full rounded-2xl shadow-xl object-cover object-top">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 02. Education & Profile -->
+    <section class="py-12 bg-white border-t border-slate-100">
+        <div class="max-w-7xl mx-auto px-6 grid grid-cols-1 md:grid-cols-2 gap-8">
+            <div class="flex items-start gap-4 p-6 bg-slate-50 rounded-xl border border-slate-100">
+                <div class="p-3 bg-blue-100 text-brand-primary rounded-lg text-2xl">🎓</div>
+                <div>
+                    <h3 class="text-xl font-bold text-brand-dark">
+                        <span class="lang-en">Bachelor's Degree in Finance</span>
+                        <span class="lang-th">ปริญญาตรี สาขาการเงิน (Finance)</span>
+                    </h3>
+                    <p class="text-slate-600 text-sm mt-2">
+                        <span class="lang-en">Solid foundation in financial analysis, corporate finance, and quantitative data evaluation. This forms the core logic of my business analysis approach.</span>
+                        <span class="lang-th">รากฐานความรู้ด้านการวิเคราะห์ตัวเลขและการเงินองค์กร ซึ่งเป็นแกนหลักในกระบวนการคิดเชิงตรรกะสำหรับการทำงานสาย Business Analyst ของผม</span>
+                    </p>
+                </div>
+            </div>
+            <div class="flex items-start gap-4 p-6 bg-slate-50 rounded-xl border border-slate-100">
+                <div class="p-3 bg-teal-100 text-brand-accent rounded-lg text-2xl">📜</div>
+                <div>
+                    <h3 class="text-xl font-bold text-brand-dark">
+                        <span class="lang-en">IC License (Level P1)</span>
+                        <span class="lang-th">ใบอนุญาตผู้แนะนำการลงทุน (IC License P1)</span>
+                    </h3>
+                    <p class="text-slate-600 text-sm mt-2">
+                        <span class="lang-en">Certified by SEC Thailand. Equipped with deep knowledge of financial instruments, complex regulatory compliance, and ethical client advisory standards.</span>
+                        <span class="lang-th">ได้รับการรับรองจาก ก.ล.ต. มีความเข้าใจลึกซึ้งเกี่ยวกับตราสารทางการเงิน กฎระเบียบข้อบังคับที่ซับซ้อน (Compliance) และจรรยาบรรณในการให้คำปรึกษา</span>
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 03. Case Studies (Table) -->
+    <section id="case-studies" class="py-24 bg-slate-50">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl md:text-4xl font-bold text-brand-dark">
+                    <span class="lang-en">Featured Case Studies</span><span class="lang-th">ผลงานที่โดดเด่น</span>
+                </h2>
+                <div class="w-16 h-1 bg-brand-accent mx-auto mt-6 rounded"></div>
+                <p class="text-slate-500 mt-4 text-lg">
+                    <span class="lang-en">A deep dive into my analytical process: from identifying the core problem to delivering measurable business impacts.</span>
+                    <span class="lang-th">เจาะลึกกระบวนการคิดของผม ตั้งแต่การวิเคราะห์ปัญหา ไปจนถึงการลงมือทำเพื่อสร้างผลลัพธ์ทางธุรกิจ</span>
+                </p>
+            </div>
+
+            <div class="overflow-x-auto bg-white rounded-2xl shadow-sm border border-slate-200">
+                <table class="min-w-full text-left border-collapse">
+                    <thead class="bg-brand-dark text-white text-sm uppercase tracking-wider">
+                        <tr>
+                            <th class="px-6 py-5 font-semibold w-1/5"><span class="lang-en">Project</span><span class="lang-th">โปรเจกต์</span></th>
+                            <th class="px-6 py-5 font-semibold w-1/4"><span class="lang-en">Objective</span><span class="lang-th">จุดประสงค์</span></th>
+                            <th class="px-6 py-5 font-semibold w-1/3"><span class="lang-en">My Action</span><span class="lang-th">สิ่งที่ผมลงมือทำ</span></th>
+                            <th class="px-6 py-5 font-semibold"><span class="lang-en">Impact</span><span class="lang-th">ผลลัพธ์</span></th>
+                            <th class="px-6 py-5 font-semibold text-center w-28"><span class="lang-en">Action</span><span class="lang-th">ดาวน์โหลด</span></th>
+                        </tr>
+                    </thead>
+                    <tbody class="divide-y divide-slate-200 text-slate-700 text-sm md:text-base leading-relaxed">
+                        
+                        <!-- Row 1 -->
+                        <tr class="hover:bg-slate-50 transition-colors">
+                            <td class="px-6 py-6 align-top">
+                                <span class="font-bold text-brand-primary block mb-2">Healthcare CAPEX & Valuation Model</span>
+                                <span class="inline-block px-2 py-1 bg-green-100 text-green-700 text-xs font-bold rounded">Financial Modeling</span>
+                            </td>
+                            <td class="px-6 py-6 align-top">
+                                <span class="lang-en">Evaluated the investment feasibility for a Mega Project hospital in the EEC area.</span>
+                                <span class="lang-th">ประเมินความคุ้มค่าของการลงทุน (Feasibility) สำหรับสร้างโรงพยาบาลระดับ Mega Project ในเขต EEC</span>
+                            </td>
+                            <td class="px-6 py-6 align-top">
+                                <ul class="list-disc ml-4 space-y-2">
+                                    <span class="lang-en">
+                                        <li>Gathered requirements from stakeholders to define cost variables.</li>
+                                        <li>Built a financial model on <b>Advanced Excel</b> covering CAPEX, PnL, and Cash Flow.</li>
+                                    </span>
+                                    <span class="lang-th">
+                                        <li>รวบรวม Requirement จากผู้มีส่วนได้ส่วนเสียเพื่อกำหนดตัวแปรต้นทุน</li>
+                                        <li>สร้างแบบจำลองทางการเงินบน <b>Advanced Excel</b> ครอบคลุม CAPEX, PnL และกระแสเงินสด</li>
+                                    </span>
+                                </ul>
+                            </td>
+                            <td class="px-6 py-6 align-top">
+                                <span class="lang-en">Turned raw assumptions into <b>data-backed insights</b>, allowing executives to negotiate with investors confidently.</span>
+                                <span class="lang-th">เปลี่ยนสมมติฐานทางธุรกิจให้เป็น <b>ข้อมูลเชิงลึก (Data-backed insights)</b> ช่วยให้ผู้บริหารมีตัวเลขที่ชัดเจนในการเจรจากับผู้ลงทุน</span>
+                            </td>
+                            <td class="px-6 py-6 align-middle text-center border-l border-slate-100">
+                                <!-- ==========================================
+                                     ใส่ชื่อไฟล์ Excel ผลงาน
+                                =========================================== -->
+                                <a href="ใส่ชื่อไฟล์_Excel_ตรงนี้.xlsx" download class="inline-flex flex-col items-center gap-1 px-3 py-2 bg-brand-primary text-white text-xs font-medium rounded hover:bg-blue-800 transition-all w-full">
+                                    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"></path></svg>
+                                    File
+                                </a>
+                            </td>
+                        </tr>
+
+                        <!-- Row 2 -->
+                        <tr class="hover:bg-slate-50 transition-colors">
+                            <td class="px-6 py-6 align-top">
+                                <span class="font-bold text-brand-primary block mb-2">SEC Compliance Framework & SOP</span>
+                                <span class="inline-block px-2 py-1 bg-purple-100 text-purple-700 text-xs font-bold rounded">Regulatory Process</span>
+                            </td>
+                            <td class="px-6 py-6 align-top">
+                                <span class="lang-en">Standardized risk disclosure guidelines to comply with SEC regulations and social media policies.</span>
+                                <span class="lang-th">วางมาตรฐานการทำงานและเปิดเผยความเสี่ยง ให้ถูกต้องตามระเบียบของ ก.ล.ต. และแพลตฟอร์มโซเชียลมีเดีย</span>
+                            </td>
+                            <td class="px-6 py-6 align-top">
+                                <ul class="list-disc ml-4 space-y-2">
+                                    <span class="lang-en">
+                                        <li>Conducted regulatory analysis on financial advertising.</li>
+                                        <li>Drafted SOP checklists for the Marketing team to review content.</li>
+                                    </span>
+                                    <span class="lang-th">
+                                        <li>วิเคราะห์ข้อกฎหมายด้านโฆษณาทางการเงิน</li>
+                                        <li>ร่างเอกสาร SOP (มาตรฐานการปฏิบัติงาน) เพื่อเป็นเช็กลิสต์ให้ทีมมาร์เก็ตติ้ง</li>
+                                    </span>
+                                </ul>
+                            </td>
+                            <td class="px-6 py-6 align-top">
+                                <span class="lang-en">Mitigated corporate legal risks and established a transparent 100% <b>Audit Trail</b>.</span>
+                                <span class="lang-th">ช่วยลดความเสี่ยงทางกฎหมายให้บริษัท และสร้าง <b>Audit Trail</b> ที่ตรวจสอบย้อนหลังได้ 100% อย่างโปร่งใส</span>
+                            </td>
+                            <td class="px-6 py-6 align-middle text-center border-l border-slate-100">
+                                <!-- ==========================================
+                                     ใส่ชื่อไฟล์ PDF ผลงาน SOP
+                                =========================================== -->
+                                <a href="ใส่ชื่อไฟล์_SOP_ตรงนี้.pdf" download class="inline-flex flex-col items-center gap-1 px-3 py-2 bg-brand-primary text-white text-xs font-medium rounded hover:bg-blue-800 transition-all w-full">
+                                    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"></path></svg>
+                                    File
+                                </a>
+                            </td>
+                        </tr>
+
+                        <!-- Row 3: Data Analytics & Sales Forecast -->
+                        <tr class="hover:bg-slate-50 transition-colors">
+                            <td class="px-6 py-6 align-top">
+                                <span class="font-bold text-brand-primary block mb-2">Sales & Marketing Data Analytics</span>
+                                <span class="inline-block px-2 py-1 bg-blue-100 text-blue-700 text-xs font-bold rounded">Data Analytics</span>
+                            </td>
+                            <td class="px-6 py-6 align-top">
+                                <span class="lang-en">Analyze historical data to forecast sales targets and drive overall marketing performance.</span>
+                                <span class="lang-th">วิเคราะห์ข้อมูลเพื่อคาดการณ์เป้ายอดขาย (Forecast) และหาแนวทางผลักดันยอดขายของทีม</span>
+                            </td>
+                            <td class="px-6 py-6 align-top">
+                                <ul class="list-disc ml-4 space-y-2">
+                                    <span class="lang-en">
+                                        <li>Gathered historical sales and marketing data to identify trends and seasonal patterns.</li>
+                                        <li>Built tracking models to align the marketing team's strategy with actionable sales targets.</li>
+                                    </span>
+                                    <span class="lang-th">
+                                        <li>นำข้อมูลย้อนหลังมาวิเคราะห์เพื่อหาเทรนด์และคาดการณ์ (Forecast) ยอดขายในอนาคต</li>
+                                        <li>ทำงานร่วมกับทีมการตลาดเพื่อกำหนดกลยุทธ์ที่ขับเคลื่อนด้วยข้อมูลจริง (Data-driven strategy)</li>
+                                    </span>
+                                </ul>
+                            </td>
+                            <td class="px-6 py-6 align-top">
+                                <span class="lang-en">Replaced guesswork with <b>data-driven targets</b>, helping the sales and marketing teams focus their efforts and drive measurable performance.</span>
+                                <span class="lang-th">เปลี่ยนการตั้งเป้าหมายจากความรู้สึก เป็นการใช้ <b>Data-driven</b> ช่วยให้ทีมเซลส์และมาร์เก็ตติ้งทำงานได้ตรงจุดและเพิ่มประสิทธิภาพยอดขายได้จริง</span>
+                            </td>
+                            <td class="px-6 py-6 align-middle text-center border-l border-slate-100">
+                                <!-- ==========================================
+                                     ใส่ชื่อไฟล์ Dashboard / Data Analysis
+                                =========================================== -->
+                                <a href="ใส่ชื่อไฟล์_Data_ตรงนี้.pdf" download class="inline-flex flex-col items-center gap-1 px-3 py-2 bg-brand-primary text-white text-xs font-medium rounded hover:bg-blue-800 transition-all w-full">
+                                    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"></path></svg>
+                                    File
+                                </a>
+                            </td>
+                        </tr>
+
+                        <!-- Row 4: Marketing Budget Optimization -->
+                        <tr class="hover:bg-slate-50 transition-colors">
+                            <td class="px-6 py-6 align-top">
+                                <span class="font-bold text-brand-primary block mb-2">Marketing Budget Optimization</span>
+                                <span class="inline-block px-2 py-1 bg-amber-100 text-amber-700 text-xs font-bold rounded">Marketing Ops</span>
+                            </td>
+                            <td class="px-6 py-6 align-top">
+                                <span class="lang-en">Manage and control the marketing budget to maximize ROI and operational efficiency.</span>
+                                <span class="lang-th">บริหารจัดการและควบคุมงบประมาณแคมเปญการตลาด เพื่อให้เกิดความคุ้มค่าสูงสุด (ROI)</span>
+                            </td>
+                            <td class="px-6 py-6 align-top">
+                                <ul class="list-disc ml-4 space-y-2">
+                                    <span class="lang-en">
+                                        <li>Audited existing marketing spend across various channels to identify wastage.</li>
+                                        <li>Reallocated budgets dynamically towards high-performing campaigns and continuously monitored metrics.</li>
+                                    </span>
+                                    <span class="lang-th">
+                                        <li>ตรวจสอบและติดตามการใช้งบประมาณการตลาดในทุกช่องทาง (Budget Control)</li>
+                                        <li>วิเคราะห์ความคุ้มค่า ปรับลดงบในแคมเปญที่ไม่เกิดผลลัพธ์ และโยกงบไปจุดที่ทำกำไรได้ดีกว่า</li>
+                                    </span>
+                                </ul>
+                            </td>
+                            <td class="px-6 py-6 align-top">
+                                <span class="lang-en">Successfully delivered marketing campaigns with approximately <b>30% improved cost efficiency</b> without compromising reach.</span>
+                                <span class="lang-th">ควบคุมงบประมาณได้ตามเป้า และสามารถเพิ่มประสิทธิภาพความคุ้มค่า (Cost Efficiency) ได้ถึง <b>30%</b> โดยผลลัพธ์ยังคงเป็นไปตามเป้าหมาย</span>
+                            </td>
+                            <td class="px-6 py-6 align-middle text-center border-l border-slate-100">
+                                <!-- ==========================================
+                                     ใส่ชื่อไฟล์ Report ของ Marketing Budget
+                                =========================================== -->
+                                <a href="ใส่ชื่อไฟล์_Marketing_ตรงนี้.pdf" download class="inline-flex flex-col items-center gap-1 px-3 py-2 bg-brand-primary text-white text-xs font-medium rounded hover:bg-blue-800 transition-all w-full">
+                                    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"></path></svg>
+                                    File
+                                </a>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </section>
+
+    <!-- 04. The Journey -->
+    <section id="journey" class="py-24 bg-white">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl md:text-4xl font-bold text-brand-dark">
+                    <span class="lang-en">The 2023 Turning Point</span><span class="lang-th">เส้นทางและประสบการณ์ทำงาน</span>
+                </h2>
+                <div class="w-16 h-1 bg-brand-accent mx-auto mt-6 rounded"></div>
+                <p class="text-slate-500 mt-4 text-lg">
+                    <span class="lang-en">Hands-on experiences that shaped my versatility in tech, finance, and business expansion.</span>
+                    <span class="lang-th">ประสบการณ์จริงที่หล่อหลอมความเข้าใจในสายงานเทคโนโลยี การเงิน และการขยายธุรกิจแบบครบวงจร</span>
+                </p>
+            </div>
+            
+            <div class="flex flex-col md:flex-row justify-center gap-4 mb-12">
+                <button onclick="openTab('tab1')" id="btn-tab1" class="tab-btn active px-6 py-3 border-2 border-slate-200 rounded-lg font-medium text-slate-600 hover:bg-slate-50 transition-all">
+                    1. IoT & Tech Foundation
+                </button>
+                <button onclick="openTab('tab2')" id="btn-tab2" class="tab-btn px-6 py-3 border-2 border-slate-200 rounded-lg font-medium text-slate-600 hover:bg-slate-50 transition-all">
+                    2. Financial Acumen
+                </button>
+                <button onclick="openTab('tab3')" id="btn-tab3" class="tab-btn px-6 py-3 border-2 border-slate-200 rounded-lg font-medium text-slate-600 hover:bg-slate-50 transition-all">
+                    3. BD & Data Execution
+                </button>
+            </div>
+            
+            <!-- Tab 1 -->
+            <div id="tab1" class="tab-content active flex-col md:flex-row gap-10 items-center bg-slate-50 rounded-2xl p-8 lg:p-12 border border-slate-200">
+                <div class="w-full md:w-1/2">
+                    <!-- ==========================================
+                         ใส่รูปผลงาน E-Power
+                    =========================================== -->
+                    <img src="ใส่ชื่อไฟล์รูป_EPOWER_ที่นี่.jpg" alt="Tech" class="w-full rounded-xl shadow-md">
+                </div>
+                <div class="w-full md:w-1/2 space-y-4">
+                    <h3 class="text-2xl font-bold text-brand-primary">E-Power Services</h3>
+                    <p class="text-slate-600 leading-relaxed">
+                        <span class="lang-en">My first step into the industrial world, managing IoT systems for Smart Farms. This gave me a solid understanding of hardware, sensor data collection, and how to pitch technical solutions to clients.</span>
+                        <span class="lang-th">ก้าวแรกในโลกอุตสาหกรรมด้วยการดูแลระบบ IoT สำหรับ Smart Farm ที่นี่สอนให้ผมเข้าใจการทำงานของระบบฮาร์ดแวร์ การเก็บข้อมูล (Data Collection) และวิธีการนำเสนอโซลูชันทางเทคนิคให้ลูกค้าเข้าใจง่าย</span>
+                    </p>
+                </div>
+            </div>
+
+            <!-- Tab 2 -->
+            <div id="tab2" class="tab-content flex-col md:flex-row gap-10 items-center bg-slate-50 rounded-2xl p-8 lg:p-12 border border-slate-200">
+                <div class="w-full md:w-1/2">
+                    <!-- ==========================================
+                         ใส่รูปผลงาน Allianz
+                    =========================================== -->
+                    <img src="ใส่ชื่อไฟล์รูป_ALLIANZ_ที่นี่.jpg" alt="Finance" class="w-full rounded-xl shadow-md">
+                </div>
+                <div class="w-full md:w-1/2 space-y-4">
+                    <h3 class="text-2xl font-bold text-brand-primary">Allianz Ayudhya (Bluestar Program)</h3>
+                    <p class="text-slate-600 leading-relaxed">
+                        <span class="lang-en">Dived into the financial and sales sector. I honed my skills in reading complex policies, conducting deep competitor analysis, and navigating professional social settings to build trust with clients.</span>
+                        <span class="lang-th">กระโดดเข้าสู่วงการการเงินและการขายอย่างเต็มตัว ผมได้ฝึกทักษะการอ่านวิเคราะห์กรมธรรม์ที่ซับซ้อน การทำ Competitor Analysis เปรียบเทียบคู่แข่ง และการวางตัวในสังคมเพื่อสร้างความน่าเชื่อถือให้กับลูกค้า</span>
+                    </p>
+                </div>
+            </div>
+
+            <!-- Tab 3 -->
+            <div id="tab3" class="tab-content flex-col md:flex-row gap-10 items-center bg-slate-50 rounded-2xl p-8 lg:p-12 border border-slate-200">
+                <div class="w-full md:w-1/2">
+                    <!-- ==========================================
+                         ใส่รูปผลงาน Shop Plus (YES Exchange)
+                    =========================================== -->
+                    <img src="ใส่ชื่อไฟล์รูป_SHOPPLUS_ที่นี่.jpg" alt="BD" class="w-full rounded-xl shadow-md">
+                </div>
+                <div class="w-full md:w-1/2 space-y-4">
+                    <h3 class="text-2xl font-bold text-brand-primary">Shop Plus Management</h3>
+                    <p class="text-slate-600 leading-relaxed">
+                        <span class="lang-en">Taking on Business Development and Data roles. I executed the "YES Exchange" project from finding locations to physical deployment. Also managed marketing data for TP Trades and expanded networks via BNI.</span>
+                        <span class="lang-th">รับบทบาท Business Development อย่างเต็มตัว ผมดูแลโปรเจกต์ 'YES Exchange' แบบ End-to-End ตั้งแต่หาพื้นที่ไปจนถึงสร้างบูธเสร็จ นอกจากนี้ยังรับหน้าที่วิเคราะห์ Marketing Data และหาพาร์ทเนอร์ธุรกิจผ่านเครือข่าย BNI</span>
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 05. Contact -->
+    <section id="contact" class="py-24 bg-brand-dark text-white text-center">
+        <div class="max-w-4xl mx-auto px-6">
+            <h2 class="text-3xl font-bold mb-6">
+                <span class="lang-en">Ready to Optimize Your Business?</span>
+                <span class="lang-th">พร้อมที่จะพัฒนาธุรกิจของคุณหรือยัง?</span>
+            </h2>
+            <p class="text-slate-400 mb-10 max-w-2xl mx-auto text-lg">
+                <span class="lang-en">Let's discuss how my analytical logic, financial background, and operational drive can help build exceptional workflows for your team.</span>
+                <span class="lang-th">ติดต่อเพื่อพูดคุยว่าลอจิกการวิเคราะห์ข้อมูล ความรู้ด้านการเงิน และแพชชั่นในการทำงานของผม จะช่วยแก้ปัญหาและสร้างระบบที่ดีให้ทีมของคุณได้อย่างไร</span>
+            </p>
+            
+            <div class="flex flex-wrap justify-center gap-4">
+                <a href="mailto:thanatorn.jo@gmail.com" class="px-8 py-4 bg-brand-primary hover:bg-blue-600 rounded-lg font-medium transition-all text-lg">✉️ thanatorn.jo@gmail.com</a>
+                <a href="tel:+660611429599" class="px-8 py-4 bg-slate-800 hover:bg-slate-700 border border-slate-700 rounded-lg font-medium transition-all text-lg">📞 (+66) 061-142-9599</a>
+            </div>
+        </div>
+    </section>
+
+    <footer class="bg-slate-950 text-slate-500 text-center py-8">
+        <p>&copy; 2026 Thanatorn Jongkijworakul.</p>
+    </footer>
+
+    <!-- JavaScript สำหรับระบบ Tabs และเปลี่ยนภาษา -->
+    <script>
+        // ระบบสลับแท็บผลงาน
+        function openTab(tabId) {
+            document.querySelectorAll('.tab-content').forEach(el => el.classList.remove('active'));
+            document.querySelectorAll('.tab-btn').forEach(el => el.classList.remove('active'));
+            document.getElementById(tabId).classList.add('active');
+            document.getElementById('btn-' + tabId).classList.add('active');
+        }
+
+        // ระบบสลับภาษา (EN / TH)
+        function toggleLanguage() {
+            const body = document.body;
+            const currentLang = body.getAttribute('data-lang');
+            // ถ้าปัจจุบันเป็น TH ให้สลับเป็น EN, ถ้าเป็น EN ให้สลับเป็น TH
+            const newLang = currentLang === 'th' ? 'en' : 'th';
+            body.setAttribute('data-lang', newLang);
+        }
+    </script>
+</body>
+</html>
